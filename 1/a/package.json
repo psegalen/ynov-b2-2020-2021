@@ -1,0 +1,15 @@
+{
+  "name": "deezer-search",
+  "version": "1.0.0",
+  "description": "Search Deezer API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
