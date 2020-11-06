@@ -8,7 +8,7 @@ class Animal {
     console.log(this.cri);
   }
   avancer() {
-    const pattes = Array(this.nbPattes + 1);
+    const pattes = new Array(this.nbPattes + 1);
     console.log(pattes.join("."));
   }
 }
@@ -23,7 +23,7 @@ class Chien extends Animal {
 
   // Surcharge de la méthode de la classe mère
   crier() {
-    console.log(`${this.nom} dit "${this.cri}"`);
+    console.log(`${this.nom} aboie "${this.cri}"`);
   }
 }
 
@@ -50,3 +50,11 @@ mDurand.crier();
 mDurand.avancer();
 
 console.log(mDurand);
+
+const mDurand2 = {
+  nbPattes: 2,
+  cri: "Aaaaaaaaaah !",
+  nom: "M. Durand"
+}
+
+console.log(mDurand2)
