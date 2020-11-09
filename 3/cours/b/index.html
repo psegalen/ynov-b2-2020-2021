@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Film ou série ?</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="index.js"></script>
+  </head>
+  <body>
+    <div id="recherche" class="racine">
+      <div class="formRecherche">
+        <form onsubmit="return false;">
+          <input type="text" id="motsRecherches" />
+          <button id="boutonRechercher">Chercher</button>
+        </form>
+      </div>
+      <div id="nbResultats"></div>
+      <div id="listeResultats"></div>
+    </div>
+    <div id="media" class="racine">
+      <div id="backdrop">
+        <div class="media-infos">
+          <img
+            src="https://www.flixdetective.com/web/images/poster-placeholder.png"
+            id="poster"
+          />
+          <div class="nomAnneeGenre">
+            <div id="nom">Nom</div>
+            <div class="anneeGenre">
+              <span id="annee">Année</span> - <span id="genre">Genre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="infos">
+        <div class="communes">
+          <div id="synopsis">
+            Synopsis : <span id="description">Description</span>
+          </div>
+          <div id="votes">
+            Note : <span id="moyenne">Moyenne</span> (<span id="nbVotes"
+              >Nb</span
+            >
+            votes)
+          </div>
+        </div>
+        <div id="film">
+          <div>Infos à propos du film :</div>
+          <div id="temps">Durée : <span id="duree">X h XX mn</span></div>
+          <div id="finances">
+            Budget : <span id="budget">X M€</span> / Revenus :
+            <span id="revenus">X M€</span>
+          </div>
+        </div>
+        <div id="serie">
+          <div>Infos à propos de la série :</div>
+          <div id="saisons"><span id="nbSaisons">X</span> saison(s)</div>
+          <ul id="detailsSaisons">
+            <li>Saison X : X épisodes</li>
+            <li>Saison X : X épisodes</li>
+            <li>Saison X : X épisodes</li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
