@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>JS Application</title>
+    <script type="module" src="index.js"></script>
+    <style>
+      .page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 4em;
+      }
+      #compteur {
+        font-size: 1em;
+        padding: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading" class="page">
+      <img src="https://www.drupal.org/files/issues/throbber_12.gif" />
+    </div>
+    <div id="home" class="page" style="display: none;">
+      <div>
+        <div>Home</div>
+        <ul>
+          <li><a href="#" class="itemLink">Item 1</a></li>
+          <li><a href="#" class="itemLink">Item 2</a></li>
+          <li><a href="#" class="itemLink">Item 3</a></li>
+        </ul>
+        <div>Compteur <button id="compteur">0</button></div>
+      </div>
+    </div>
+    <div id="item" class="page" style="display: none;">
+      <div>Item n°<span id="numeroFiche"></span></div>
+      <div><a href="#" id="backLink">Retour</a></div>
+    </div>
+  </body>
+</html>

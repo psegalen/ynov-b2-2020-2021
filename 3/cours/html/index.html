@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>HTML Application</title>
+    <script src="index.js"></script>
+    <style>
+      .page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+      }
+      #compteur {
+        font-size: 1em;
+        padding: 32px;
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <div id="home" class="page">
+      <div>
+        <div>Home</div>
+        <ul>
+          <li><a href="item.html?id=1">Item 1</a></li>
+          <li><a href="item.html?id=2">Item 2</a></li>
+          <li><a href="item.html?id=3">Item 3</a></li>
+        </ul>
+        <div>Compteur <button id="compteur">0</button></div>
+      </div>
+    </div>
+  </body>
+</html>
