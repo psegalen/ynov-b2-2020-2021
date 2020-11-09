@@ -1,31 +1,6 @@
-import { Movie } from "./classes/Movie.js";
-import { Serie } from "./classes/Serie.js";
+import { initMedia } from "./media.js";
+import { initSearch } from "./search.js";
 import { id } from "./utils.js";
-
-const traiterFilm = (data) => {
-  const film = new Movie(data);
-  film.populate();
-};
-
-const traiterSerie = (data) => {
-  const serie = new Serie(data);
-  serie.populate();
-};
-
-const chargerMedia = (mediaType, id) => {
-  if (id.length === 0 || mediaType.length === 0) {
-    alert("Il y a un souci dans l'URL !");
-  } else {
-    const tmdbUrl = `https://api.themoviedb.org/3/${mediaType}/${id}?api_key=97719463bea4bd4b5902c1a735c0556a&language=fr-FR`;
-    axios
-      .get(tmdbUrl)
-      .then((result) =>
-        mediaType == "movie"
-          ? traiterFilm(result.data)
-          : traiterSerie(result.data)
-      );
-  }
-};
 
 const selectPage = () => {
   const hash = document.location.hash.replace("#", "");
@@ -33,16 +8,26 @@ const selectPage = () => {
   switch (path[0]) {
     case "movie":
     case "tv":
-      id("recherche").style.display = "none";
-      id("media").style.display = "";
-      chargerMedia(path[0], path[1]);
+      initMedia(path[0], path[1]);
+      break;
+    case "search":
+      initSearch(path[1]);
       break;
     default:
-      id("recherche").style.display = "";
-      id("media").style.display = "none";
+      initSearch();
       break;
+  }
+};
+
+const launchSearch = () => {
+  const searchTerm = encodeURIComponent(id("motsRecherches").value);
+  if (searchTerm.length !== 0) {
+    document.location.hash = `#search/${searchTerm}`;
+  } else {
+    alert("Merci de renseigner le champs texte");
   }
 };
 
 window.addEventListener("load", selectPage);
 window.addEventListener("hashchange", selectPage);
+id("boutonRechercher").addEventListener("click", launchSearch);

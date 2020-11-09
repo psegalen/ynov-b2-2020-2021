@@ -5,7 +5,7 @@ const urlDuBackdrop = (media) =>
     ? "https://image.tmdb.org/t/p/w1280" + media.backdrop_path
     : "https://betravingknows.com/wp-content/uploads/2017/06/video-movie-placeholder-image-grey.png";
 
-const urlDuPoster = (media) =>
+export const urlDuPoster = (media) =>
   media.poster_path
     ? "https://image.tmdb.org/t/p/w154" + media.poster_path
     : "https://www.flixdetective.com/web/images/poster-placeholder.png";
@@ -13,6 +13,29 @@ const urlDuPoster = (media) =>
 export class Media {
   constructor(data) {
     this.data = data;
+  }
+
+  populateSimilar(result, mediaType) {
+    id("similaires").innerText = "";
+    if (result.results.length !== 0) {
+      result.results.forEach((media) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.innerText =
+          mediaType === "movie" ? media.title : media.name;
+        link.href = `#${mediaType}/${media.id}`;
+        li.appendChild(link);
+        id("similaires").appendChild(li);
+      });
+    }
+  }
+
+  getSimilar(mediaType) {
+    const mediaId = this.data.id;
+    const tmdbUrl = `https://api.themoviedb.org/3/${mediaType}/${mediaId}/similar?api_key=97719463bea4bd4b5902c1a735c0556a&language=fr-FR`;
+    axios
+      .get(tmdbUrl)
+      .then((result) => this.populateSimilar(result.data, mediaType));
   }
 
   populate() {

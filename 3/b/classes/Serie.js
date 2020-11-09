@@ -10,6 +10,8 @@ export class Serie extends Media {
   populate() {
     super.populate();
 
+    this.getSimilar("tv");
+
     id("film").style.display = "none";
     id("serie").style.display = "";
 
