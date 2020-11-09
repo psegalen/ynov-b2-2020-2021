@@ -6,7 +6,7 @@
     <script type="module" src="index.js"></script>
   </head>
   <body>
-    <div id="recherche" class="racine">
+    <div id="recherche" class="racine hidden">
       <div class="formRecherche">
         <form onsubmit="return false;">
           <input type="text" id="motsRecherches" />
@@ -16,7 +16,7 @@
       <div id="nbResultats"></div>
       <div id="listeResultats"></div>
     </div>
-    <div id="media" class="racine">
+    <div id="media" class="racine hidden">
       <div id="backdrop">
         <div class="media-infos">
           <img
@@ -41,6 +41,10 @@
               >Nb</span
             >
             votes)
+          </div>
+          <div>
+            <span id="similairesType">Médias</span> similaires :
+            <ul id="similaires"></ul>
           </div>
         </div>
         <div id="film">

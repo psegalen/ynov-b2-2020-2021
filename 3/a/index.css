@@ -9,6 +9,57 @@ body {
   margin: auto;
 }
 
+.hidden {
+  display: none;
+}
+
+a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+/* VVVVVVVV Search VVVVVVV */
+
+#listeResultats {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.media {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 33%;
+  padding: 16px;
+}
+
+.poster {
+  height: 200px;
+}
+
+.searchInfos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 16px;
+}
+
+.titre {
+  font-size: 1.2em;
+}
+
+.type {
+  font-size: 1em;
+}
+
+.annee {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+/* VVVVVVVV Media VVVVVVV */
+
 #backdrop {
   height: 450px;
   position: relative;

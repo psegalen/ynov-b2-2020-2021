@@ -29,6 +29,8 @@ export class Movie extends Media {
   populate() {
     super.populate();
 
+    this.populateSimilar("movie");
+
     id("serie").style.display = "none";
     id("film").style.display = "";
 
