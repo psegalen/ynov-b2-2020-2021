@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Recherche</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script type="module" src="index.js"></script>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="racine" id="recherche">
+      <div>
+        <form onsubmit="return false;">
+          Recherche <input type="text" id="motsRecherches" />
+          <button id="boutonRecherche">Chercher</button>
+        </form>
+      </div>
+      <div><span class="nbResultats">?</span> résultat(s)</div>
+      <div id="resultats"></div>
+    </div>
+    <div class="racine" id="media" style="display: none;">
+      <div id="backdrop">
+        <div class="media-infos">
+          <img
+            src="https://www.flixdetective.com/web/images/poster-placeholder.png"
+            id="poster"
+          />
+          <div class="nomAnneeGenre">
+            <div id="nom">Nom</div>
+            <div class="anneeGenre">
+              <span id="annee">Année</span> - <span id="genre">Genre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="media-images"></div>
+      <div class="infos">
+        <div class="communes">
+          <div id="synopsis">
+            Synopsis : <span id="description">Description</span>
+          </div>
+          <div id="votes">
+            Note : <span id="moyenne">Moyenne</span> (<span id="nbVotes"
+              >Nb</span
+            >
+            votes)
+          </div>
+          <div>
+            Médias similaires :
+            <div id="similaires"></div>
+          </div>
+        </div>
+        <div id="film" class="panneau">
+          <div>Infos à propos du film :</div>
+          <div id="temps">Durée : <span id="duree">X h XX mn</span></div>
+          <div id="finances">
+            Budget : <span id="budget">X M€</span> / Revenus :
+            <span id="revenus">X M€</span>
+          </div>
+          <div class="rentable">Bonne rentabilité !</div>
+          <div class="pasRentable">Oh le mauvais plan !</div>
+        </div>
+        <div id="serie" class="panneau">
+          <div>Infos à propos de la série :</div>
+          <div id="saisons">
+            <span id="nbSaisons">X</span> saison<span id="saisonPluriel"
+              >s</span
+            >
+          </div>
+          <ul id="detailsSaisons">
+            <li>Saison X : X épisodes</li>
+            <li>Saison X : X épisodes</li>
+            <li>Saison X : X épisodes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
