@@ -1,0 +1,134 @@
+body {
+  background-color: #333;
+  color: #ddd;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #555;
+}
+
+input {
+  color: #ddd;
+  font-size: 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  background-color: #333;
+  border: 1px solid #ddd;
+}
+
+.racine {
+  width: 70%;
+  margin: auto;
+}
+
+#backdrop {
+  height: 450px;
+  position: relative;
+  background: url(https://betravingknows.com/wp-content/uploads/2017/06/video-movie-placeholder-image-grey.png)
+    center center;
+  background-size: cover;
+}
+
+.media-infos {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(51, 51, 51, 0.6),
+    rgba(51, 51, 51, 1)
+  );
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 16px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.nomAnneeGenre {
+  display: flex;
+  flex-direction: column;
+}
+
+#nom {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.anneeGenre {
+  font-size: 20px;
+}
+
+#poster {
+  width: 154px;
+  margin: 0 32px;
+}
+
+.infos {
+  margin: 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.infos div {
+  margin: 8px 0;
+}
+
+.infos div.communes {
+  margin-right: 32px;
+}
+
+.communes,
+#film,
+#serie {
+  flex: 1;
+}
+
+#resultats {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 32px;
+}
+
+#resultats a {
+  padding: 16px;
+}
+
+.resultat {
+  display: flex;
+  flex-direction: row;
+  background-color: #111;
+}
+
+.resultat-infos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.resultat-titre {
+  font-size: 1.5em;
+}
+
+.resultat-annee {
+  color: #aaa;
+}
+
+#media-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#media-images img {
+  margin: 16px;
+}
