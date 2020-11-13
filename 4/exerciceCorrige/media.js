@@ -34,6 +34,7 @@ const traiterMedia = (data, type) => {
 
 const traiterImages = images => {
   const divImages = Helpers.id("media-images");
+  divImages.innerText = "";
   images.map(image => {
     const img = document.createElement("img");
     img.src = Helpers.imageUrl(image.file_path);
@@ -42,12 +43,13 @@ const traiterImages = images => {
 };
 
 const traiterSimilaires = (similaires, type) => {
+  Helpers.id("similaires").innerText = "";
   for (let i = 0; i < similaires.length; i++) {
     const element = similaires[i];
     const lien = document.createElement("a");
     lien.style.display = "block";
-    lien.innerText = type === "movie" ? element.name : element.title;
-    lien.href = "#${type}/${element.id}";
+    lien.innerText = type === "movie" ? element.title : element.name;
+    lien.href = `#${type}/${element.id}`;
     Helpers.id("similaires").appendChild(lien);
   }
 };
@@ -71,10 +73,10 @@ const chargerMedia = (type, id) => {
     .then(response => traiterImages(response.data.backdrops))
     .catch(error => console.error(error));
 
-  const similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api-key=${apiKey}&language=fr-FR`;
+  const similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${apiKey}&language=fr-FR`;
   axios
     .get(similarUrl)
-    .then(response => traiterSimilaires(response.data.results));
+    .then(response => traiterSimilaires(response.data.results, type));
 };
 
 export default chargerMedia;

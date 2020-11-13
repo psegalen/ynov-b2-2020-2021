@@ -43,7 +43,7 @@ const traiterResultats = data => {
       Helpers.id("resultats").appendChild(creerCase(resultat));
     }
   }
-  document.querySelector("nbResultat").innerText = data.nb_results;
+  document.querySelector(".nbResultats").innerText = data.total_results;
 };
 
 const rechercher = () => {

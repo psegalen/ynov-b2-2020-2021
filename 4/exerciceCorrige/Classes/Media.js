@@ -20,12 +20,12 @@ export default class Media {
       "nbVotes",
       numeral(this.data.vote_count).format("0,0 a")
     );
-    Helpers.id("moyenne").style.backgroundColor =
-      this.data.vote_average > "7,0"
-        ? "#00FFF00"
-        : this.data.vote_average < "5,0"
-        ? ""
-        : "#FF00000";
+    Helpers.id("moyenne").style.color =
+      this.data.vote_average > 7
+        ? "#00FF00"
+        : this.data.vote_average < 5
+        ? "#FF0000"
+        : "";
   }
 
   cacherPanneau(id) {
