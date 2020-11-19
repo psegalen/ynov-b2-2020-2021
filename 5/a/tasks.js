@@ -1,4 +1,4 @@
-import { getTasks, setTaskIsCompleted } from "./api.js";
+import { deleteTask, getTasks, setTaskIsCompleted } from "./api.js";
 
 let ourTasks = [];
 
@@ -43,6 +43,20 @@ const setTaskCompletion = (taskId, isChecked) => {
     });
 };
 
+const deleteButtonClicked = (taskId) => {
+  console.log("Must delete task", taskId);
+  deleteTask(taskId)
+    .then(() => {
+      // Delete task from ourTasks
+      ourTasks = ourTasks.filter((task) => task.id !== taskId);
+      buildList(ourTasks);
+    })
+    .catch((err) => {
+      console.error("Something happened when deleting a task", err);
+      alert("Une erreur est survenue côté serveur");
+    });
+};
+
 const createTask = (task, ul) => {
   const li = document.createElement("li");
   li.className = "task-li";
@@ -63,6 +77,9 @@ const createTask = (task, ul) => {
   li.appendChild(title);
   const deleteButton = document.createElement("a");
   deleteButton.setAttribute("uk-icon", "trash");
+  deleteButton.addEventListener("click", () =>
+    deleteButtonClicked(task.id)
+  );
   li.appendChild(deleteButton);
   ul.appendChild(li);
 };

@@ -19,3 +19,9 @@ export const setTaskIsCompleted = (taskId, isCompleted) =>
       crudfulConfig
     )
     .then((result) => result.data);
+
+export const deleteTask = (taskId) =>
+  axios.delete(
+    `https://todo.crudful.com/tasks/${taskId}`,
+    crudfulConfig
+  );
