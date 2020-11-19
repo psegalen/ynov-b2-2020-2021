@@ -1,4 +1,9 @@
-import { deleteTask, getTasks, setTaskIsCompleted } from "./api.js";
+import {
+  deleteTask,
+  getTasks,
+  postTask,
+  setTaskIsCompleted,
+} from "./api.js";
 
 let ourTasks = [];
 
@@ -44,7 +49,6 @@ const setTaskCompletion = (taskId, isChecked) => {
 };
 
 const deleteButtonClicked = (taskId) => {
-  console.log("Must delete task", taskId);
   deleteTask(taskId)
     .then(() => {
       // Delete task from ourTasks
@@ -97,7 +101,20 @@ const buildList = (tasks) => {
 };
 
 const addNewTask = () => {
-  showPanel("tasks-list");
+  const title = document.getElementById("task-new-title").value;
+  // Create task
+  postTask(title)
+    .then((task) => {
+      // Update ourTasks
+      ourTasks.push(task);
+      buildList(ourTasks);
+      showPanel("tasks-list");
+      document.getElementById("task-new-title").value = "";
+    })
+    .catch((err) => {
+      console.error("Could not create task", err);
+      alert("Une erreur est survenue côté serveur");
+    });
 };
 
 const refreshAllTasks = () =>
@@ -114,6 +131,9 @@ const initTasks = () => {
   document
     .getElementById("task-new-button")
     .addEventListener("click", addNewTask);
+  document
+    .getElementById("task-new-cancel")
+    .addEventListener("click", () => showPanel("tasks-list"));
   refreshAllTasks();
 };
 

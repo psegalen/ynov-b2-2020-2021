@@ -53,3 +53,10 @@ body {
 .striked {
   text-decoration: line-through;
 }
+
+.panel-buttons {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
