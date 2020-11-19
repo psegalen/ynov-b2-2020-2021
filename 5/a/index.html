@@ -31,7 +31,10 @@
         <div uk-spinner></div>
       </div>
       <div id="tasks-list" class="panel" hidden>
-        <ul class="uk-list uk-list-large uk-list-divider">
+        <ul
+          id="tasks-ul"
+          class="uk-list uk-list-large uk-list-divider"
+        >
           <li>List item 1</li>
           <li>List item 2</li>
           <li>List item 3</li>
@@ -45,6 +48,7 @@
         <input id="task-new-title" type="text" />
         <button id="task-new-button">Ajouter</button>
       </div>
+      <a href="#" id="task-new-link">+ Nouvelle tâche</a>
     </div>
   </body>
 </html>
