@@ -1,4 +1,6 @@
-import { getTasks } from "./api.js";
+import { getTasks, setTaskIsCompleted } from "./api.js";
+
+let ourTasks = [];
 
 const showPanel = (panelId) => {
   // Hide all panels
@@ -19,16 +21,45 @@ const showPanel = (panelId) => {
   }
 };
 
+const setTaskCompletion = (taskId, isChecked) => {
+  setTaskIsCompleted(taskId, isChecked)
+    .then((newTaskState) => {
+      // Replace task in ourTasks by its new state
+      for (let i = 0; i < ourTasks.length; i++) {
+        if (ourTasks[i].id === taskId) {
+          ourTasks[i] = newTaskState;
+          break;
+        }
+      }
+      buildList(ourTasks);
+    })
+    .catch((err) => {
+      console.error(
+        "Something happened when setting task completion",
+        err
+      );
+      alert("Une erreur est survenue côté serveur");
+      buildList(ourTasks);
+    });
+};
+
 const createTask = (task, ul) => {
   const li = document.createElement("li");
   li.className = "task-li";
   const checkbox = document.createElement("input");
   checkbox.id = `checkbox_${task.id}`;
   checkbox.type = "checkbox";
+  checkbox.checked = task.isCompleted;
+  checkbox.addEventListener("change", (evt) =>
+    setTaskCompletion(task.id, evt.target.checked)
+  );
   li.appendChild(checkbox);
   const title = document.createElement("label");
   title.setAttribute("for", `checkbox_${task.id}`);
   title.innerText = task.title;
+  if (task.isCompleted) {
+    title.className = "striked";
+  }
   li.appendChild(title);
   const deleteButton = document.createElement("a");
   deleteButton.setAttribute("uk-icon", "trash");
@@ -48,12 +79,25 @@ const buildList = (tasks) => {
   }
 };
 
-export const initTasks = () => {
+const addNewTask = () => {
+  showPanel("tasks-list");
+};
+
+const refreshAllTasks = () =>
+  getTasks().then((tasks) => {
+    ourTasks = tasks;
+    buildList(tasks);
+  });
+
+const initTasks = () => {
   showPanel("tasks-loading");
   document
     .getElementById("task-new-link")
     .addEventListener("click", () => showPanel("tasks-new"));
-  getTasks().then((tasks) => {
-    buildList(tasks);
-  });
+  document
+    .getElementById("task-new-button")
+    .addEventListener("click", addNewTask);
+  refreshAllTasks();
 };
+
+export default initTasks;
