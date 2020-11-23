@@ -4,9 +4,12 @@ const crudfulConfig = {
   },
 };
 
-export const getTasks = () =>
+export const getTasks = (listId) =>
   axios
-    .get("https://todo.crudful.com/tasks", crudfulConfig)
+    .get(
+      `https://todo.crudful.com/tasks?listId=${listId}`,
+      crudfulConfig
+    )
     .then((result) => result.data.results);
 
 export const setTaskIsCompleted = (taskId, isCompleted) =>
