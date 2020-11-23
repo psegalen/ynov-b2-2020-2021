@@ -117,7 +117,7 @@ const addNewTask = () => {
     });
 };
 
-const refreshAllTasks = () =>
+export const refreshAllTasks = () =>
   getTasks().then((tasks) => {
     ourTasks = tasks;
     buildList(tasks);
@@ -134,7 +134,6 @@ const initTasks = () => {
   document
     .getElementById("task-new-cancel")
     .addEventListener("click", () => showPanel("tasks-list"));
-  refreshAllTasks();
 };
 
 export default initTasks;

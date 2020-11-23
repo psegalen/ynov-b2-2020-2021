@@ -24,6 +24,35 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
   </head>
   <body>
+    <div id="lists-page" class="page">
+      <h1>Mes listes de choses à faire</h1>
+      <hr />
+      <div id="lists-loading" class="panel" hidden>
+        <div uk-spinner></div>
+      </div>
+      <div id="lists-list" class="panel" hidden>
+        <ul
+          id="lists-ul"
+          class="uk-list uk-list-large uk-list-divider"
+        >
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ul>
+      </div>
+      <div id="lists-empty" class="panel" hidden>
+        Pas de liste à afficher
+      </div>
+      <div id="lists-new" class="panel" hidden>
+        <span>Nouvelle liste, titre :</span>
+        <input id="list-new-title" type="text" />
+        <div class="panel-buttons">
+          <button id="list-new-cancel">Annuler</button>
+          <button id="list-new-button">Ajouter</button>
+        </div>
+      </div>
+      <a href="#" id="list-new-link">+ Nouvelle liste</a>
+    </div>
     <div id="tasks-page" class="page">
       <h1>Mes choses à faire</h1>
       <hr />

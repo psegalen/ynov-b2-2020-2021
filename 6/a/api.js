@@ -34,3 +34,23 @@ export const postTask = (title) =>
       crudfulConfig
     )
     .then((result) => result.data);
+
+export const getLists = () =>
+  axios
+    .get("https://todo.crudful.com/lists", crudfulConfig)
+    .then((result) => result.data.results);
+
+export const deleteList = (listId) =>
+  axios.delete(
+    `https://todo.crudful.com/lists/${listId}`,
+    crudfulConfig
+  );
+
+export const postList = (title) =>
+  axios
+    .post(
+      "https://todo.crudful.com/lists",
+      { title: title },
+      crudfulConfig
+    )
+    .then((result) => result.data);

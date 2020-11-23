@@ -25,19 +25,23 @@ body {
   min-height: 300px;
 }
 
-.panel#tasks-new {
+.panel#tasks-new,
+.panel#lists-new {
   flex-direction: column;
 }
 
-#task-new-title {
+#task-new-title,
+#list-new-title {
   margin: 16px 0;
 }
 
-#tasks-ul {
+#tasks-ul,
+#lists-ul {
   width: 80%;
 }
 
-.task-li {
+.task-li,
+.list-li {
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,9 +49,9 @@ body {
   box-sizing: border-box;
 }
 
-.task-li label {
+.task-li label,
+.list-tasks-link {
   flex: 1;
-  padding-left: 16px;
 }
 
 .striked {
