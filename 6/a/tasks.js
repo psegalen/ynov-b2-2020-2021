@@ -6,6 +6,7 @@ import {
 } from "./api.js";
 
 let ourTasks = [];
+let ourListId = "";
 
 const showPanel = (panelId) => {
   // Hide all panels
@@ -103,7 +104,7 @@ const buildList = (tasks) => {
 const addNewTask = () => {
   const title = document.getElementById("task-new-title").value;
   // Create task
-  postTask(title)
+  postTask(title, ourListId)
     .then((task) => {
       // Update ourTasks
       ourTasks.push(task);
@@ -117,11 +118,13 @@ const addNewTask = () => {
     });
 };
 
-export const refreshAllTasks = () =>
+export const refreshAllTasks = (listId) => {
+  ourListId = listId;
   getTasks().then((tasks) => {
     ourTasks = tasks;
     buildList(tasks);
   });
+};
 
 const initTasks = () => {
   showPanel("tasks-loading");
