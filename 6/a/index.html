@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Todo-list</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="module" src="index.js"></script>
+
+    <!-- Axios lib -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+  </head>
+  <body>
+    <div id="tasks-page" class="page">
+      <h1>Mes choses à faire</h1>
+      <hr />
+      <div id="tasks-loading" class="panel" hidden>
+        <div uk-spinner></div>
+      </div>
+      <div id="tasks-list" class="panel" hidden>
+        <ul
+          id="tasks-ul"
+          class="uk-list uk-list-large uk-list-divider"
+        >
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ul>
+      </div>
+      <div id="tasks-empty" class="panel" hidden>
+        Pas de tâche à afficher
+      </div>
+      <div id="tasks-new" class="panel" hidden>
+        <span>Nouvelle tâche, titre :</span>
+        <input id="task-new-title" type="text" />
+        <div class="panel-buttons">
+          <button id="task-new-cancel">Annuler</button>
+          <button id="task-new-button">Ajouter</button>
+        </div>
+      </div>
+      <a href="#" id="task-new-link">+ Nouvelle tâche</a>
+    </div>
+  </body>
+</html>

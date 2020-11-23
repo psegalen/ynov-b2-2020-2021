@@ -1,0 +1,46 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #ccc;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  color: #555;
+}
+
+.page {
+  width: 70%;
+  margin: auto;
+  padding: 64px;
+  background-color: #fff;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.tasks-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+}
+
+#tasks {
+  width: 90%;
+}
+
+#tasks li {
+  display: flex;
+  align-items: center;
+  margin: 32px 0;
+}
+
+#tasks label {
+  flex: 1;
+  padding: 0 32px;
+}
+
+#task-title {
+  margin: 0 32px;
+}
