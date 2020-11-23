@@ -29,24 +29,43 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
   </head>
   <body>
+    <div id="lists-page" class="page">
+      <h1>Mes listes de choses à faire</h1>
+      <hr />
+      <div id="lists-loading" class="lists-panel uk-hidden">
+        <div uk-spinner></div>
+      </div>
+      <div id="lists-list" class="lists-panel uk-hidden">
+        <ul id="lists" class="uk-list"></ul>
+      </div>
+      <div id="lists-empty" class="lists-panel uk-hidden">
+        Pas de listes à afficher
+      </div>
+      <div id="lists-new" class="lists-panel uk-hidden">
+        Nouvelle liste :
+        <input type="text" id="list-title" />
+        <button id="list-add">Ajouter</button>
+      </div>
+      <a href="javascript:void(0)" id="list-new">+ Nouvelle liste</a>
+    </div>
     <div id="tasks-page" class="page">
       <h1>Mes choses à faire</h1>
       <hr />
-      <div id="tasks-loading" class="tasks-panel">
+      <div id="tasks-loading" class="tasks-panel uk-hidden">
         <div uk-spinner></div>
       </div>
-      <div id="tasks-list" class="tasks-panel">
+      <div id="tasks-list" class="tasks-panel uk-hidden">
         <ul id="tasks" class="uk-list"></ul>
       </div>
-      <div id="tasks-empty" class="tasks-panel">
+      <div id="tasks-empty" class="tasks-panel uk-hidden">
         Pas de tâches à afficher
       </div>
-      <div id="tasks-new" class="tasks-panel">
+      <div id="tasks-new" class="tasks-panel uk-hidden">
         Nouvelle tâche :
         <input type="text" id="task-title" />
         <button id="task-add">Ajouter</button>
       </div>
-      <a href="#" id="task-new">+ Nouvelle tâche</a>
+      <a href="javascript:void(0)" id="task-new">+ Nouvelle tâche</a>
     </div>
   </body>
 </html>

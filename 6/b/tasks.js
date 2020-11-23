@@ -6,6 +6,7 @@ import {
 } from "./api.js";
 
 let ourTasks = [];
+let ourListId = "";
 
 const managePanelVisibility = (panelId, visiblePanelId) => {
   const panel = document.getElementById(panelId);
@@ -85,7 +86,7 @@ const renderTask = (task) => {
     checkboxChanged(evt.target.checked, task.id, title, checkbox)
   );
   const deleteButton = document.createElement("a");
-  deleteButton.href = "#";
+  deleteButton.href = "javascript:void(0)";
   deleteButton.setAttribute("uk-icon", "trash");
   deleteButton.addEventListener("click", () =>
     deleteButtonClicked(task.id, li)
@@ -108,12 +109,14 @@ const refreshOrder = () => {
 
 const addTask = () => {
   const title = document.getElementById("task-title").value;
-  createTask(title)
+  createTask(title, ourListId)
     .then((result) => {
       const newTask = result.data;
       ourTasks.push(newTask);
       refreshOrder();
       showPanel("tasks-list");
+      // Don't forget to reset the input value after creating the task
+      document.getElementById("task-title").value = "";
     })
     .catch((err) => {
       alert("Impossible de créer la tâche !");
@@ -121,22 +124,25 @@ const addTask = () => {
     });
 };
 
-export const initTasks = () => {
+export const showTasks = (listId) => {
   showPanel("tasks-loading");
+  ourListId = listId;
   getTasks().then((tasks) => {
     ourTasks = tasks;
-    console.debug(ourTasks);
     refreshOrder();
     if (tasks.length > 0) {
       showPanel("tasks-list");
     } else {
       showPanel("tasks-empty");
     }
-    document
-      .getElementById("task-new")
-      .addEventListener("click", () => showPanel("tasks-new"));
-    document
-      .getElementById("task-add")
-      .addEventListener("click", addTask);
   });
+};
+
+export const initTasks = () => {
+  document
+    .getElementById("task-new")
+    .addEventListener("click", () => showPanel("tasks-new"));
+  document
+    .getElementById("task-add")
+    .addEventListener("click", addTask);
 };
