@@ -119,6 +119,7 @@ const addNewTask = () => {
 };
 
 export const refreshAllTasks = (listId) => {
+  showPanel("tasks-loading");
   ourListId = listId;
   getTasks().then((tasks) => {
     ourTasks = tasks;
@@ -127,7 +128,6 @@ export const refreshAllTasks = (listId) => {
 };
 
 const initTasks = () => {
-  showPanel("tasks-loading");
   document
     .getElementById("task-new-link")
     .addEventListener("click", () => showPanel("tasks-new"));
