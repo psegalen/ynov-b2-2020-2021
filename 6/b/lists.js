@@ -1,9 +1,4 @@
-import {
-  createList,
-  createTask,
-  deleteList,
-  getLists,
-} from "./api.js";
+import { createList, deleteList, getLists } from "./api.js";
 
 let ourLists = [];
 
@@ -66,14 +61,7 @@ const renderList = (list) => {
 
 const refreshOrder = () => {
   document.getElementById("lists").innerText = "";
-  const lists = ourLists.sort((a, b) => {
-    if (a.isCompleted && !b.isCompleted) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-  lists.forEach((list) => renderList(list));
+  ourLists.forEach((list) => renderList(list));
 };
 
 const addList = () => {
