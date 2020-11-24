@@ -127,7 +127,7 @@ const addTask = () => {
 export const showTasks = (listId) => {
   showPanel("tasks-loading");
   ourListId = listId;
-  getTasks().then((tasks) => {
+  getTasks(listId).then((tasks) => {
     ourTasks = tasks;
     refreshOrder();
     if (tasks.length > 0) {
