@@ -1,0 +1,66 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #ccc;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page {
+  background-color: #fff;
+  height: 100%;
+  width: 70%;
+  margin: auto;
+  padding: 64px;
+  box-sizing: border-box;
+}
+
+.panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.panel#tasks-new,
+.panel#lists-new {
+  flex-direction: column;
+}
+
+#task-new-title,
+#list-new-title {
+  margin: 16px 0;
+}
+
+#tasks-ul,
+#lists-ul {
+  width: 80%;
+}
+
+.task-li,
+.list-li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+.task-li label,
+.list-tasks-link {
+  flex: 1;
+}
+
+.striked {
+  text-decoration: line-through;
+}
+
+.panel-buttons {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
