@@ -32,6 +32,13 @@ export const createTask = (title, listId, details, due) =>
     crudfulConfig
   );
 
+export const patchTask = (title, taskId, details, due) =>
+  axios.patch(
+    `https://todo.crudful.com/tasks/${taskId}`,
+    { title: title, details: details, due: due },
+    crudfulConfig
+  );
+
 export const getLists = () =>
   axios
     .get("https://todo.crudful.com/lists", crudfulConfig)

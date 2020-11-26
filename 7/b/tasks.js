@@ -2,11 +2,14 @@ import {
   createTask,
   deleteTask,
   getTasks,
+  patchTask,
   setTaskIsCompleted,
 } from "./api.js";
 
 let ourTasks = [];
 let ourListId = "";
+let isUpdating = false;
+let updatingTaskId = "";
 
 const managePanelVisibility = (panelId, visiblePanelId) => {
   const panel = document.getElementById(panelId);
@@ -70,6 +73,25 @@ const deleteButtonClicked = (taskId) => {
     });
 };
 
+const updateButtonClicked = (task) => {
+  isUpdating = true;
+  updatingTaskId = task.id;
+  document.getElementById("task-title").value = task.title;
+  document.getElementById("task-details").value = task.details;
+  if (task.due !== null) {
+    document.getElementById("task-due").value = task.due.split(
+      "T"
+    )[0];
+  } else {
+    document.getElementById("task-due").value = "";
+  }
+  document.getElementById(
+    "task-form-title"
+  ).innerText = `Mettre à jour la tâche\n ${task.id}`;
+  document.getElementById("task-add").innerText = "Mettre à jour";
+  showPanel("tasks-new");
+};
+
 const renderTask = (task) => {
   const li = document.createElement("li");
   const checkbox = document.createElement("input");
@@ -105,6 +127,13 @@ const renderTask = (task) => {
   checkbox.addEventListener("change", (evt) =>
     checkboxChanged(evt.target.checked, task.id)
   );
+  const updateButton = document.createElement("a");
+  updateButton.href = "javascript:void(0)";
+  updateButton.setAttribute("uk-icon", "pencil");
+  updateButton.addEventListener("click", () =>
+    updateButtonClicked(task)
+  );
+  li.appendChild(updateButton);
   const deleteButton = document.createElement("a");
   deleteButton.href = "javascript:void(0)";
   deleteButton.setAttribute("uk-icon", "trash");
@@ -132,20 +161,48 @@ const addTask = () => {
   const details = document.getElementById("task-details").value;
   const due = document.getElementById("task-due").value;
   const dueDate = new Date(due);
-  createTask(title, ourListId, details, dueDate.toISOString())
+  createTask(
+    title,
+    ourListId,
+    details,
+    due.length > 0 ? dueDate.toISOString() : null
+  )
     .then((result) => {
       const newTask = result.data;
       ourTasks.push(newTask);
       refreshOrder();
       showPanel("tasks-list");
-      // Don't forget to reset the input value after creating the task
-      document.getElementById("task-title").value = "";
-      document.getElementById("task-details").value = "";
-      document.getElementById("task-due").value = "";
     })
     .catch((err) => {
       alert("Impossible de créer la tâche !");
       console.error("Could not create task!", err);
+    });
+};
+
+const updateTask = () => {
+  const title = document.getElementById("task-title").value;
+  const details = document.getElementById("task-details").value;
+  const due = document.getElementById("task-due").value;
+  const dueDate = new Date(due);
+  patchTask(
+    title,
+    updatingTaskId,
+    details,
+    due.length > 0 ? dueDate.toISOString() : null
+  )
+    .then((result) => {
+      const newTaskState = result.data;
+      for (let i = 0; i < ourTasks.length; i++) {
+        if (ourTasks[i].id === updatingTaskId) {
+          ourTasks[i] = newTaskState;
+        }
+      }
+      refreshOrder();
+      showPanel("tasks-list");
+    })
+    .catch((err) => {
+      alert("Impossible de mettre à jour la tâche !");
+      console.error("Could not update task!", err);
     });
 };
 
@@ -163,13 +220,32 @@ export const showTasks = (listId) => {
   });
 };
 
+const taskNew = () => {
+  isUpdating = false;
+  document.getElementById("task-title").value = "";
+  document.getElementById("task-details").value = "";
+  document.getElementById("task-due").value = "";
+  document.getElementById("task-form-title").innerText =
+    "Nouvelle tâche";
+  document.getElementById("task-add").innerText = "Ajouter";
+  showPanel("tasks-new");
+};
+
+const addOrUpdateTask = () => {
+  if (isUpdating) {
+    updateTask();
+  } else {
+    addTask();
+  }
+};
+
 export const initTasks = () => {
   document
     .getElementById("task-new")
-    .addEventListener("click", () => showPanel("tasks-new"));
+    .addEventListener("click", taskNew);
   document
     .getElementById("task-add")
-    .addEventListener("click", addTask);
+    .addEventListener("click", addOrUpdateTask);
   document
     .getElementById("task-cancel")
     .addEventListener("click", () => showPanel("tasks-list"));

@@ -39,6 +39,11 @@ body {
   padding: 32px 32px 32px 0;
 }
 
+#tasks li a,
+#lists li a {
+  margin-left: 16px;
+}
+
 #tasks label,
 #lists .list-link {
   flex: 1;
@@ -54,6 +59,7 @@ body {
 #tasks-new span,
 #lists-new span {
   margin-bottom: 32px;
+  text-align: center;
 }
 
 #tasks-new input,
