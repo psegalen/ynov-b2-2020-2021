@@ -36,7 +36,7 @@ body {
 #lists li {
   display: flex;
   align-items: center;
-  margin: 32px 0;
+  padding: 32px 32px 32px 0;
 }
 
 #tasks label,
@@ -45,7 +45,43 @@ body {
   padding: 0 32px;
 }
 
-#task-title,
-#list-title {
+#tasks-new,
+#lists-new {
+  display: flex;
+  flex-direction: column;
+}
+
+#tasks-new span,
+#lists-new span {
+  margin-bottom: 32px;
+}
+
+#tasks-new input,
+#lists-new input {
+  margin-left: 32px;
+}
+
+#tasks-new button,
+#lists-new button {
   margin: 0 32px;
+}
+
+.task-label,
+.task-label-completed {
+  display: flex;
+  flex-direction: column;
+}
+
+.span-title {
+  font-size: 1.2em;
+}
+
+.span-details,
+.span-due {
+  font-size: 0.8em;
+}
+
+.task-label-completed .span-title,
+.task-label-completed .span-details {
+  text-decoration: line-through;
 }

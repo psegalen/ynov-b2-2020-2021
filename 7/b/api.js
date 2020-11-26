@@ -25,10 +25,10 @@ export const deleteTask = (taskId) =>
     crudfulConfig
   );
 
-export const createTask = (title, listId) =>
+export const createTask = (title, listId, details, due) =>
   axios.post(
     "https://todo.crudful.com/tasks",
-    { title: title, listId: listId },
+    { title: title, listId: listId, details: details, due: due },
     crudfulConfig
   );
 
@@ -43,9 +43,9 @@ export const deleteList = (listId) =>
     crudfulConfig
   );
 
-export const createList = (title) =>
+export const createList = (title, color) =>
   axios.post(
     "https://todo.crudful.com/lists",
-    { title: title },
+    { title: title, color: color },
     crudfulConfig
   );

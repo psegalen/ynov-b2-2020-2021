@@ -56,6 +56,9 @@ const renderList = (list) => {
     deleteButtonClicked(list.id, li)
   );
   li.appendChild(deleteButton);
+  if (list.color.length === 6) {
+    li.style.backgroundColor = `#${list.color}`;
+  }
   document.getElementById("lists").appendChild(li);
 };
 
@@ -66,7 +69,8 @@ const refreshOrder = () => {
 
 const addList = () => {
   const title = document.getElementById("list-title").value;
-  createList(title)
+  const color = document.getElementById("list-color").value;
+  createList(title, color.substring(1))
     .then((result) => {
       const newList = result.data;
       ourLists.push(newList);
@@ -74,6 +78,7 @@ const addList = () => {
       showPanel("lists-list");
       // Don't forget to reset the input value after creating the list
       document.getElementById("list-title").value = "";
+      document.getElementById("list-color").value = "";
     })
     .catch((err) => {
       alert("Impossible de créer la liste !");
@@ -101,4 +106,7 @@ export const initLists = () => {
   document
     .getElementById("list-add")
     .addEventListener("click", addList);
+  document
+    .getElementById("list-cancel")
+    .addEventListener("click", () => showPanel("lists-list"));
 };

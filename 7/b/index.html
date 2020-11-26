@@ -42,9 +42,13 @@
         Pas de listes à afficher
       </div>
       <div id="lists-new" class="lists-panel uk-hidden">
-        Nouvelle liste :
-        <input type="text" id="list-title" />
-        <button id="list-add">Ajouter</button>
+        <span>Nouvelle liste :</span>
+        <span>Titre : <input type="text" id="list-title" /></span>
+        <span>Couleur : <input type="color" id="list-color" /></span>
+        <span
+          ><button id="list-cancel">Annuler</button
+          ><button id="list-add">Ajouter</button></span
+        >
       </div>
       <a href="javascript:void(0)" id="list-new">+ Nouvelle liste</a>
     </div>
@@ -61,9 +65,14 @@
         Pas de tâches à afficher
       </div>
       <div id="tasks-new" class="tasks-panel uk-hidden">
-        Nouvelle tâche :
-        <input type="text" id="task-title" />
-        <button id="task-add">Ajouter</button>
+        <span>Nouvelle tâche :</span>
+        <span>Titre : <input type="text" id="task-title" /></span>
+        <span>Détails : <input type="text" id="task-details" /></span>
+        <span>Deadline : <input type="date" id="task-due" /></span>
+        <span
+          ><button id="task-cancel">Annuler</button>
+          <button id="task-add">Ajouter</button></span
+        >
       </div>
       <a href="javascript:void(0)" id="task-new">+ Nouvelle tâche</a>
     </div>
