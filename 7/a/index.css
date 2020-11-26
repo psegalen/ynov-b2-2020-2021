@@ -30,9 +30,14 @@ body {
   flex-direction: column;
 }
 
-#task-new-title,
-#list-new-title {
-  margin: 16px 0;
+#tasks-new span,
+#lists-new span {
+  margin-bottom: 32px;
+}
+
+#tasks-new input,
+#lists-new input {
+  margin-left: 32px;
 }
 
 #tasks-ul,
@@ -45,13 +50,23 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  padding-right: 32px;
+  padding: 32px 32px 32px 0;
   box-sizing: border-box;
+  margin: 0 !important;
+}
+
+.task-li a {
+  margin-left: 16px;
 }
 
 .task-li label,
 .list-tasks-link {
   flex: 1;
+}
+
+.task-li label {
+  display: flex;
+  flex-direction: column;
 }
 
 .striked {
@@ -63,4 +78,13 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.span-title {
+  font-size: 1.2em;
+}
+
+.span-due,
+.span-details {
+  font-size: 0.8em;
 }

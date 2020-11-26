@@ -45,7 +45,8 @@
       </div>
       <div id="lists-new" class="panel" hidden>
         <span>Nouvelle liste, titre :</span>
-        <input id="list-new-title" type="text" />
+        <span><input id="list-new-title" type="text" /></span>
+        <span><input id="list-new-color" type="color" /></span>
         <div class="panel-buttons">
           <button id="list-new-cancel">Annuler</button>
           <button id="list-new-button">Ajouter</button>
@@ -75,11 +76,17 @@
         Pas de tâche à afficher
       </div>
       <div id="tasks-new" class="panel" hidden>
-        <span>Nouvelle tâche, titre :</span>
-        <input id="task-new-title" type="text" />
+        <span id="task-span-title">Nouvelle tâche</span>
+        <span>Titre : <input id="task-new-title" type="text" /></span>
+        <span
+          >Détails : <input id="task-new-details" type="text"
+        /></span>
+        <span
+          >Deadline : <input id="task-new-due" type="date"
+        /></span>
         <div class="panel-buttons">
           <button id="task-new-cancel">Annuler</button>
-          <button id="task-new-button">Ajouter</button>
+          <button id="task-new-button">Ok</button>
         </div>
       </div>
       <a href="javascript:void(0)" id="task-new-link"

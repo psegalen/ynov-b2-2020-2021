@@ -47,6 +47,9 @@ const createList = (list, ul) => {
   deleteButton.addEventListener("click", () =>
     deleteButtonClicked(list.id)
   );
+  if (list.color.length > 0) {
+    li.style.backgroundColor = `#${list.color}`;
+  }
   li.appendChild(deleteButton);
   ul.appendChild(li);
 };
@@ -65,14 +68,16 @@ const buildList = (lists) => {
 
 const addNewList = () => {
   const title = document.getElementById("list-new-title").value;
+  const color = document.getElementById("list-new-color").value;
   // Create task
-  postList(title)
+  postList(title, color.substring(1))
     .then((list) => {
       // Update ourLists
       ourLists.push(list);
       buildList(ourLists);
       showPanel("lists-list");
       document.getElementById("list-new-title").value = "";
+      document.getElementById("list-new-color").value = "";
     })
     .catch((err) => {
       console.error("Could not create list", err);
