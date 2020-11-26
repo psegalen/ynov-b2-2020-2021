@@ -21,18 +21,37 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const Counter = () => {
-        const [count, setCount] = React.useState(0);
+      const Counter = (props) => {
+        console.debug("Counter is rendered", props);
+        const [count, setCount] = React.useState(props.initialValue);
         return (
-          <button onClick={() => setCount(count + 1)}>{count}</button>
+          <button onClick={() => setCount(count + 1)}>
+            {props.prefix}
+            {count}
+          </button>
         );
       };
-      const Hello = (props) => (
-        <div>
-          <h1>Hello {props.name}!</h1>
-          <Counter />
-        </div>
-      );
+
+      const Hello = (props) => {
+        console.debug("Hello is rendered", props);
+        return (
+          <div>
+            <h1>Hello {props.name}!</h1>
+            <div>
+              <Counter initialValue={10} prefix="A" />
+              <Counter initialValue={20} prefix="B" />
+            </div>
+            <div>
+              <Counter initialValue={30} prefix="C" />
+              <Counter initialValue={40} prefix="D" />
+            </div>
+            <div>
+              <Counter initialValue={50} prefix="E" />
+            </div>
+          </div>
+        );
+      };
+
       ReactDOM.render(
         <Hello name="World" />,
         document.getElementById("root")
