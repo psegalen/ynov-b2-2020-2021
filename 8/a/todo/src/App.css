@@ -1,3 +1,30 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ccc;
+  color: #555;
+}
+
+.App-root {
+  width: 70%;
+  margin: auto;
+  padding: 64px;
+  background-color: #fff;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.App-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+}
+
+.App-panel ul {
+  width: 80%;
 }

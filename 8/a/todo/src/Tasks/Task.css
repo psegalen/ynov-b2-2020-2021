@@ -1,0 +1,16 @@
+.striked {
+  text-decoration: line-through;
+}
+
+.task-li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+.task-li label {
+  flex: 1;
+  padding-left: 16px;
+}
