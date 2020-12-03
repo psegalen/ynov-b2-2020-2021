@@ -1,15 +1,12 @@
-import './App.css';
+import "./App.css";
+import TasksPage from "./Tasks/TasksPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          TODO-list
-        </p>
-      </header>
+const App = () => (
+  <div className="App">
+    <div className="App-root">
+      <TasksPage />
     </div>
-  );
-}
+  </div>
+);
 
 export default App;
