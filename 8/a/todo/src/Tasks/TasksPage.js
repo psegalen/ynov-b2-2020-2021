@@ -22,6 +22,17 @@ const TasksPage = () => {
     });
   };
 
+  // Toggle the property isCompleted of a task
+  const toggleIsCompleted = (taskId) => {
+    const newTasks = tasks.slice();
+    newTasks.forEach((task) => {
+      if (task.id === taskId) {
+        task.isCompleted = !task.isCompleted;
+      }
+    });
+    setTasks(newTasks);
+  };
+
   return (
     <div>
       <h1>Mes choses à faire</h1>
@@ -29,7 +40,11 @@ const TasksPage = () => {
       <div className="App-panel">
         <ul className="uk-list uk-list-large uk-list-divider">
           {tasks.map((task) => (
-            <Task task={task} onRemove={() => removeTask(task.id)} />
+            <Task
+              task={task}
+              onRemove={() => removeTask(task.id)}
+              onToggle={() => toggleIsCompleted(task.id)}
+            />
           ))}
         </ul>
       </div>
